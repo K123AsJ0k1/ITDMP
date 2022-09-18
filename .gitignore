@@ -1,3 +1,5 @@
 Fanfic_E
 fictionpress01
 venv
+.env
+__pycache__
