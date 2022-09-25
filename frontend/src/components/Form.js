@@ -6,8 +6,9 @@ const Form = () => {
 
   const checkText = (event) => {
     event.preventDefault()
-    api.sendData({ text: text })
-    console.log(text)
+    api.sendData({ text: text }).then(data => {
+        console.log(data)
+    })
   }
 
   return(
