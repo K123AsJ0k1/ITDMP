@@ -1,4 +1,5 @@
 from cgitb import small
+from importlib.resources import path
 import numpy as np
 from scipy import stats
 import re
@@ -16,6 +17,36 @@ def createCsv(dirName, header, data):
         writer.writerow(header)
         writer.writerows(data)
         csv_file.close()
+
+def statText(text):
+    words_per_section = []
+    sections = 0
+    smallest_section = 100000
+    largest_section = 0
+    
+    for line in text:
+        if len(line) > 1:
+            split_length = len(re.findall("[\w']+",line))
+            if split_length > 0:
+                if split_length < smallest_section:
+                    smallest_section = split_length
+            
+                if largest_section < split_length:
+                    largest_section = split_length
+
+                words_per_section.append(split_length)
+                sections += 1
+        
+    mean = None
+    median = None
+    mode = None
+    
+    if len(words_per_section) > 0:
+        mean = round(np.mean(words_per_section),3)
+        median = np.median(words_per_section)
+        mode = stats.mode(np.array(words_per_section), keepdims=False)[0]
+    
+    return [sections, smallest_section, largest_section, mean, median, mode]
 
 def sectionStats(path):
     file = open(path, 'r', encoding='utf-8')
@@ -109,10 +140,32 @@ def getTexts(N):
 def main():
     #dirName = os.path.dirname(__file__)
     #pathName = os.path.join(dirName, 'fictionpress01\\fictionpress')
-    start = time.time()
-    getTexts(100000)
-    end = time.time()
-    print(end - start)
+    #path = 'Love_-_Post_Preemptive_Pandora_-_Straight_Girl.txt'
+    
+    dirName = os.path.dirname(__file__)
+    pathName = os.path.join(dirName, 'Love_-_Post_Preemptive_Pandora_-_Straight_Girl.txt')
+    file = open(pathName, 'r', encoding='utf-8')
+    text = []
+
+    text = []
+    row = 1
+    for line in file.readlines():
+        if 'End file' in line:
+            break
+
+        if row >= 30:
+            text.append(line)
+        
+        row = row + 1
+    #print(file)
+    #print(''.join(text))
+    print(statText(text))
+    #dirName = os.path.dirname(__file__)
+    #pathName = os.path.join(dirName, 'fictionpress01\\fictionpress')
+    #start = time.time()
+    #getTexts(100000)
+    #end = time.time()
+    #print(end - start)
     # Test
     # Action - bloodyhand43 - The Great Fight Between a US Soldier and The Koreans.txt
     # Action - lan Bradley - Oil.txt
