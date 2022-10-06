@@ -19,10 +19,10 @@ jobs:
           node-version: "16"
       - name: npm install
         run: npm install
-        working-directory: '/frontend'
+        working-directory: './frontend'
       - name: build
         run: npm run build
-        working-directory: '/frontend'
+        working-directory: './frontend'
       - name: heroku deployment
         uses: akhileshns/heroku-deploy@v3.12.12
         if: ${{ !contains(join(github.event.commits.*.message), '#skip') && (github.event_name != 'pull_request')  }}
