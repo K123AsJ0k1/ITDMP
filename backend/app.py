@@ -10,6 +10,7 @@ CORS(app)
 def model():
     data = request.json
     #text = request.json['text']
+    # sad
     print(data)
     return jsonify({'status': 200}) 
 
