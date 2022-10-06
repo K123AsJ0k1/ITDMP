@@ -5,3 +5,6 @@ venv
 __pycache__
 *.csv
 *.txt
+preprocess
+backend
+test.py
