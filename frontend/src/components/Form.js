@@ -1,32 +1,32 @@
 import { useState } from 'react'
 import api from '../services/api'
+import '../App.css'
 
-const Form = () => {
+const Form = ({setData}) => {
   const [text, setText] = useState('')
 
   const checkText = (event) => {
     event.preventDefault()
     api.sendData({ text: text }).then(data => {
-        console.log(data)
+        setData(data)
+        //console.log(data)
     })
   }
 
   return(
     <div>
-      <h2>Check text with model</h2>
-      <form onSubmit={checkText}>
+      <form onSubmit={checkText} className='form'>
+        <button id="create-button" type="submit" className='formButton'>Copy your text and click this!</button>
         <div>
-          text:
-          <input
+          <textarea
             id="text"
             type="text"
             value={text}
             name="text"
             onChange={({ target }) => setText(target.value)}
-            placeholder='text'
+            className='formTextBox'
           />
         </div>
-        <button id="create-button" type="submit">Check text</button>
       </form>
     </div>
   )

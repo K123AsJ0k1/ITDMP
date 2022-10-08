@@ -142,24 +142,24 @@ def main():
     #pathName = os.path.join(dirName, 'fictionpress01\\fictionpress')
     #path = 'Love_-_Post_Preemptive_Pandora_-_Straight_Girl.txt'
     
-    dirName = os.path.dirname(__file__)
-    pathName = os.path.join(dirName, 'Love_-_Post_Preemptive_Pandora_-_Straight_Girl.txt')
-    file = open(pathName, 'r', encoding='utf-8')
-    text = []
+    #dirName = os.path.dirname(__file__)
+    #pathName = os.path.join(dirName, 'Love_-_Post_Preemptive_Pandora_-_Straight_Girl.txt')
+    #file = open(pathName, 'r', encoding='utf-8')
+    #text = []
 
-    text = []
-    row = 1
-    for line in file.readlines():
-        if 'End file' in line:
-            break
+    #text = []
+    #row = 1
+    #for line in file.readlines():
+    #    if 'End file' in line:
+    #        break
 
-        if row >= 30:
-            text.append(line)
+    #    if row >= 30:
+    #        text.append(line)
         
-        row = row + 1
+    #    row = row + 1
     #print(file)
     #print(''.join(text))
-    print(statText(text))
+    #print(statText(text))
     #dirName = os.path.dirname(__file__)
     #pathName = os.path.join(dirName, 'fictionpress01\\fictionpress')
     #start = time.time()
@@ -187,7 +187,7 @@ def main():
     #statTest('Action - ilu - Arc_ngeles.txt')
     #statTest('Action - jclappt - Access to Betrayal.txt')
     #statTest('Action - Aurora Moon1 - a very long night.txt')
-    #statTest('Action - juicier-than-thou - pirate girl part 2.txt')
+    statTest('Action - juicier-than-thou - pirate girl part 2.txt')
     #statTest('Fantasy - Autumn-Wind-Kaze - Shadow Words_ The Lovelorn Shadow.txt')
     #statTest('')
     
