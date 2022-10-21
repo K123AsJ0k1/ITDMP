@@ -1,0 +1,57 @@
+.wrapper,
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: gold;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formButton {
+  width: 22vw;
+  height: 10vh;
+  background-color: gainsboro;
+  margin-top: 2vh;
+}
+
+.formTextBox {
+  display: flex;
+  margin-top: 2vh;
+  width: 40vw;
+  height: 500px;
+  resize: none;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: violet;
+}
+
+.result {
+  display: flex;
+  align-self: center;
+  margin-top: 2vh;
+}
